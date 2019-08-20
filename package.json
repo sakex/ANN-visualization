@@ -1,0 +1,27 @@
+{
+  "name": "ann-visualization",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "resolutions": {
+    "@types/react": "16.7.18"
+  },
+  "dependencies": {
+    "@types/next": "^8.0.6",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.8.5",
+    "d3": "^5.9.7",
+    "next": "9.0.3",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "sigma": "^2.0.0-alpha22",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "typescript": "^3.5.3"
+  }
+}
