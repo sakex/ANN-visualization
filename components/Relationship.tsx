@@ -25,7 +25,7 @@ export class Relationship extends Component<propTypes> {
                 y1={this.input.y}
                 x2={this.output.x}
                 y2={this.output.y}
-                stroke={randomRGBA(1)}
+                stroke={randomRGBA(0.8)}
                 strokeWidth="3"
                 fill="red"
             />

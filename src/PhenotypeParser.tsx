@@ -57,11 +57,11 @@ export class PhenotypeParser implements Parser {
         this.nodesData.forEach((layer: NodeData[], layerIndex: number) => {
             const layerLength = layer.length;
             const spaceHeight = this.height / layerLength - nodeHeight;
-            const x = layerIndex * nodeHeight * 1.3 + nodeHeight;
+            const x = layerIndex * nodeHeight * 2 + nodeHeight;
             layer.forEach((nodeData: NodeData, index: number) => {
                 const point: Point = {
                     x,
-                    y: (nodeHeight + spaceHeight) * index + spaceHeight,
+                    y: (nodeHeight + spaceHeight) * index + (nodeHeight + spaceHeight) / 2,
                     radius: nodeHeight / 2
                 };
                 nodeData.point = point;
