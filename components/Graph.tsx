@@ -2,20 +2,31 @@ import React, { Component } from 'react';
 import { Phenotype, Parser } from '../types';
 import { Layer } from './Node';
 
-class Graph extends Component<{ data: Phenotype[]; parser: Parser }> {
+interface propTypes {
+    data: Phenotype[];
+    parser: Parser;
+    width: number;
+    height: number;
+}
+
+class Graph extends Component<propTypes> {
     private nodes: Layer[];
     private parser: Parser;
+    private width: number;
+    private height: number;
 
-    constructor(props: { data: Phenotype[]; parser: Parser }) {
+    constructor(props: propTypes) {
         super(props);
+        this.width = props.width;
+        this.height = props.height;
         this.parser = props.parser;
-        this.parser.setProperties(800, 800);
+        this.parser.setProperties(this.width, this.height);
         this.nodes = this.parser.parseData(props.data);
     }
 
     public render() {
         return (
-            <svg id="graph" width={800} height={800}>
+            <svg id="graph" width={this.width} height={this.height}>
                 {this.nodes}
             </svg>
         );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Point } from '../types';
+import { randomRGBA } from '../src/utils';
 
 export class Node extends Component<{ point: Point }> {
     private position: Point;
@@ -15,9 +16,9 @@ export class Node extends Component<{ point: Point }> {
                 cx={this.position.x}
                 cy={this.position.y}
                 r={this.position.radius}
-                stroke="black"
-                strokeWidth="3"
-                fill="red"
+                stroke={randomRGBA(1)}
+                strokeWidth={5}
+                fill={randomRGBA(7)}
             />
         );
     }
