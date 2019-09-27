@@ -33,7 +33,7 @@ export class NodeData {
         const lines: JSX.Element[] = [];
         this.connections.forEach((connection: NodeConnection, index: number) => {
             lines.push(
-                <Relationship input={this._point} output={connection.outbound.point} key={index} />
+                <Relationship weight={connection.weight} input={this._point} output={connection.outbound.point} key={index} />
             );
         });
         return lines;

@@ -10,7 +10,7 @@ const Home = () => (
             <title>Home</title>
         </Head>
 
-        <Graph parser={new PhenotypeParser()} data={nodes} width={2000} height={800} />
+        <Graph parser={new PhenotypeParser()} data={nodes} width={4000} height={800} />
     </div>
 );
 
