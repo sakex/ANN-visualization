@@ -4,14 +4,14 @@ import { Layer } from './Node';
 
 interface propTypes {
     data: Phenotype[];
-    parser: Parser;
+    parser: Parser<Phenotype, Layer>;
     width: number;
     height: number;
 }
 
 class Graph extends Component<propTypes> {
     private nodes: Layer[];
-    private parser: Parser;
+    private parser: Parser<Phenotype, Layer>;
     private width: number;
     private height: number;
 
