@@ -3,7 +3,7 @@ import { NodeData } from './NodeData';
 import { Phenotype, Parser, Point } from '../types';
 import { Layer } from '../components/Node';
 
-export class PhenotypeParser implements Parser<Phenotype, Layer> {
+export class PhenotypeParser implements Parser<Phenotype, Layer[]> {
     private width: number;
     private height: number;
     private readonly nodesData: NodeData[][] = [];

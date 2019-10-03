@@ -15,3 +15,11 @@ export interface StrategyLine {
     equityy1: number;
     equityy2: number;
 }
+
+export interface StrategyData {
+    lines: StrategyLine[];
+    minPercentage: number;
+    maxPercentage: number;
+    scale: number;
+    sharpe: number;
+}
