@@ -4,19 +4,23 @@ export class StrategyParser implements Parser<StrategyPoint, StrategyData> {
     private width: number;
     private height: number;
 
-    static mean(data: StrategyPoint[]): number {
-        return (
-            data.reduce((accumulator, item: StrategyPoint) => accumulator + item.equity, 0) /
-            data.length
-        );
+    static returnArray(data: StrategyPoint[]): number[] {
+        const output: number[] = [];
+        for (let i = 1; i < data.length; ++i) {
+            output.push((data[i].equity - data[i - 1].equity) / data[i - 1].equity);
+        }
+        return output;
     }
 
-    static volatility(data: StrategyPoint[]): number {
+    static mean(data: number[]): number {
+        return data.reduce((accumulator, val: number) => accumulator + val, 0) / data.length;
+    }
+
+    static volatility(data: number[]): number {
         const mean = StrategyParser.mean(data);
         return Math.sqrt(
             data.reduce(
-                (accumulator, item: StrategyPoint) =>
-                    accumulator + (item.equity - mean) ** 2 / (data.length - 1),
+                (accumulator, val: number) => accumulator + (val - mean) ** 2 / (data.length - 1),
                 0
             )
         );
@@ -24,7 +28,9 @@ export class StrategyParser implements Parser<StrategyPoint, StrategyData> {
 
     static sharpe(data: StrategyPoint[]): number {
         const ret = (data[data.length - 1].equity - data[0].equity) / data[0].equity;
-        const vol = StrategyParser.volatility(data);
+        const returns = StrategyParser.returnArray(data);
+        const vol = StrategyParser.volatility(returns);
+        console.log(vol);
         return (ret - 0.02) / vol;
     }
 
