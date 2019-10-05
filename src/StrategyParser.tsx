@@ -7,13 +7,13 @@ export class StrategyParser implements Parser<StrategyPoint, StrategyData> {
     static returnArray(data: StrategyPoint[]): number[] {
         const output: number[] = [];
         for (let i = 1; i < data.length; ++i) {
-            output.push((data[i].equity - data[i - 1].equity) / data[i - 1].equity);
+            output.push(Math.log(data[i].equity) - Math.log(data[i - 1].equity));
         }
         return output;
     }
 
     static mean(data: number[]): number {
-        return data.reduce((accumulator, val: number) => accumulator + val, 0) / data.length;
+        return data.reduce((accumulator, val: number) => accumulator + val / data.length, 0);
     }
 
     static volatility(data: number[]): number {
@@ -30,8 +30,10 @@ export class StrategyParser implements Parser<StrategyPoint, StrategyData> {
         const ret = (data[data.length - 1].equity - data[0].equity) / data[0].equity;
         const returns = StrategyParser.returnArray(data);
         const vol = StrategyParser.volatility(returns);
-        console.log(vol);
-        return (ret - 0.02) / vol;
+        const mean = StrategyParser.mean(returns);
+        console.log('mean: ', mean);
+        console.log('vol: ', vol);
+        return (mean / vol + 0.5 * vol) * Math.sqrt(252 * 9 * 4);
     }
 
     static max(data: StrategyPoint[], key: string): number {
