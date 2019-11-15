@@ -77,7 +77,7 @@ export class StrategyParser implements Parser<StrategyPoint, StrategyData> {
 
         const _max = valueReturnMax > equityReturnMax ? valueReturnMax : equityReturnMax;
         const _min = valueReturnMin < equityReturnMin ? valueReturnMin : equityReturnMin;
-        const scale = this.height / (_max - _min) / Math.abs(_max / _min);
+        const scale = this.height / (2 * Math.abs(_max - _min));
 
         const halfHeight = this.height * 0.5;
 

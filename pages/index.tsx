@@ -11,7 +11,7 @@ const Home = () => (
         <Head>
             <title>Home</title>
         </Head>
-        <Graph parser={new PhenotypeParser()} data={nodes} width={4000} height={800} />
+        <Graph parser={new PhenotypeParser()} data={nodes} width={400000} height={800} />
 
         <Strategy data={curve} width={1800} height={800} />
     </div>

@@ -25,12 +25,12 @@ export class PhenotypeParser implements Parser<Phenotype, Layer[]> {
 
     private generateNodesData(data: Phenotype[]): void {
         this.nodesData.length = 0;
-        data.forEach(({ disabled, input, output, weight }: Phenotype) => {
+        data.forEach(({ disabled, input, output, input_weight }: Phenotype) => {
             if (disabled) return;
 
             const merged_input: NodeData = this.mergePhenotype(input[0], input[1]);
             const merged_output: NodeData = this.mergePhenotype(output[0], output[1]);
-            merged_input.addConnection(weight, merged_output);
+            merged_input.addConnection(input_weight, merged_output);
         });
     }
 

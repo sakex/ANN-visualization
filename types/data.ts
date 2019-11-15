@@ -9,7 +9,7 @@ export interface Point {
 export interface Phenotype {
     readonly input: number[];
     readonly output: number[];
-    readonly weight: number;
+    readonly input_weight: number;
     readonly disabled: boolean;
 }
 
